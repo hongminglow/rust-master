@@ -1,0 +1,27 @@
+# Rust build artifacts
+target/
+backend/target/
+
+# Node.js / Vite
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/IDEs
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Project specific
+.agent/
