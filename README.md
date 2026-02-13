@@ -34,7 +34,65 @@ The frontend will start on `http://localhost:5173` (or similar).
 
 ---
 
-## 🧐 Rust vs. Node.js: Syntax Comparison
+## � Understanding the Stack
+
+### What is Axum?
+If you're coming from other languages, think of **Axum** as:
+- **Node.js**: Express / Fastify
+- **Go**: Gin / Gorilla Mux / Echo
+- **Python**: FastAPI
+
+It handles the "Web" part of your Rust backend: routing, parsing JSON requests, sending responses, and managing middlewares (like CORS).
+
+---
+
+## 🛠️ How to Add a New API Route
+
+Follow this flow to add a new feature (e.g., a "Profile" endpoint):
+
+### 1. Define your Data Structure
+In `backend/src/models.rs`, create a struct for your data. Use `#[derive(Serialize)]` so Rust can turn it into JSON.
+```rust
+#[derive(Serialize)]
+pub struct Profile {
+    pub username: String,
+    pub bio: String,
+}
+```
+
+### 2. Create the Handler Function
+In `backend/src/handlers.rs`, create an `async` function.
+```rust
+pub async fn get_profile() -> Json<Profile> {
+    Json(Profile {
+        username: String::from("Rustacean"),
+        bio: String::from("Learning Rust is fun!"),
+    })
+}
+```
+
+### 3. Register the Route
+In `backend/src/main.rs`, add the route to the `Router`:
+```rust
+use crate::handlers::{get_profile}; // <--- Import it
+
+let app = Router::new()
+    .route("/api/profile", get(get_profile)) // <--- Register it
+```
+
+### 4. Update the Frontend
+In `frontend/src/App.tsx`, you can now fetch from your new endpoint:
+```typescript
+const fetchProfile = async () => {
+  const res = await fetch('http://localhost:3001/api/profile');
+  const data = await res.json();
+  console.log(data);
+};
+```
+
+---
+
+## �🧐 Rust vs. Node.js: Syntax Comparison
 
 For developers coming from a Node.js background, Rust might look intimidating at first. Here is a quick comparison to help you bridge the gap:
 
