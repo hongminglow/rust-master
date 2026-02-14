@@ -8,10 +8,11 @@ Welcome to the **Rust Learning Hub**! This is a simple, monorepo-style template 
   - Full CRUD implementation (Create, Read, Update, Delete).
   - Real-time communication via WebSockets (Real-time clock).
   - In-memory data store using `Arc<RwLock<Vec<T>>>`.
-- **`frontend/`**: A sleek React (TypeScript + Vite) dashboard.
-  - Interactive CRUD interface.
-  - Real-time WebSocket clock display in the top right.
-  - Premium dark-mode aesthetics.
+- **`frontend/`**: A premium React (TypeScript + Vite) dashboard.
+  - **Syntax Tutorial**: Comprehensive guide on Rust basics vs Node.js.
+  - **CRUD Playground**: Real-time testing of Rust backend logic.
+  - **Concurrency Visualizer**: Explanations of how `RwLock` prevents data races.
+  - **Real-time Clock**: Live WebSocket clock in the top right.
 
 ---
 
