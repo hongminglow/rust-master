@@ -1,8 +1,59 @@
-import { Terminal, Code2, ShieldAlert, Cpu } from 'lucide-react';
+import { Terminal, Code2, ShieldAlert, Cpu, Zap } from 'lucide-react';
 
 const Documentation = () => {
   return (
     <div className="tutorial-page">
+      <section className="tutorial-section">
+        <div className="card" style={{ border: '1px solid rgba(96, 165, 250, 0.3)', background: 'rgba(96, 165, 250, 0.05)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+            <Zap size={32} className="text-blue-400" />
+            <h2>0. Comparative Overview: Why Rust?</h2>
+          </div>
+          <div className="tutorial-content">
+            <p style={{ marginBottom: '1.5rem' }}>
+              Before we dive into syntax, here is how Rust levels up your backend game compared to Node.js.
+            </p>
+            <div className="comparison-grid" style={{ gridTemplateColumns: '1fr', gap: '1rem' }}>
+              <div className="card" style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '1.25rem' }}>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '500px' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <th style={{ padding: '0.75rem', color: '#94a3b8' }}>Feature</th>
+                        <th style={{ padding: '0.75rem', color: '#94a3b8' }}>Node.js</th>
+                        <th style={{ padding: '0.75rem', color: '#60a5fa' }}>Rust (The Winner)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        <td style={{ padding: '0.75rem', fontWeight: 'bold' }}>Memory</td>
+                        <td style={{ padding: '0.75rem' }}>Garbage Collector (Heavy)</td>
+                        <td style={{ padding: '0.75rem', color: '#34d399' }}>Ownership (Zero-Cost)</td>
+                      </tr>
+                      <tr style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        <td style={{ padding: '0.75rem', fontWeight: 'bold' }}>Speed</td>
+                        <td style={{ padding: '0.75rem' }}>Fast (JIT Compiled)</td>
+                        <td style={{ padding: '0.75rem', color: '#34d399' }}>Native Speed (Compiled)</td>
+                      </tr>
+                      <tr style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        <td style={{ padding: '0.75rem', fontWeight: 'bold' }}>Safety</td>
+                        <td style={{ padding: '0.75rem' }}>Runtime Dynamic Checks</td>
+                        <td style={{ padding: '0.75rem', color: '#34d399' }}>Compile-time Strictness</td>
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.75rem', fontWeight: 'bold' }}>Concurrency</td>
+                        <td style={{ padding: '0.75rem' }}>Single Event Loop</td>
+                        <td style={{ padding: '0.75rem', color: '#34d399' }}>Fearless Multi-threading</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="tutorial-section">
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
@@ -159,23 +210,58 @@ const Documentation = () => {
       </section>
 
       <section className="tutorial-section">
-        <div className="card" style={{ border: '1px solid rgba(167, 139, 250, 0.3)', background: 'rgba(167, 139, 250, 0.05)' }}>
+        <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-            <Cpu size={32} className="text-indigo-400" />
-            <h2>8. Is Rust like C or Python?</h2>
+            <Terminal size={32} className="text-green-400" />
+            <h2>8. Enums with Data (The Game Changer)</h2>
           </div>
-          <div className="tutorial-content">
-            <p style={{ marginBottom: '1rem' }}>
-              Think of Rust as a <strong>Hybrid</strong>:
-            </p>
-            <ul style={{ paddingLeft: '1.5rem', listStyleType: 'disc' }}>
-              <li><strong>Performance of C++:</strong> No garbage collector, talks to hardware.</li>
-              <li><strong>Safety of Java:</strong> Buffer overflows and null crashes are impossible.</li>
-              <li><strong>Ergonomics of Python/JS:</strong> High-level syntax, great package manager (Cargo).</li>
-            </ul>
-            <p style={{ marginTop: '1rem', fontSize: '1rem', color: '#f8fafc' }}>
-              👉 It's not "just C." It's a modern language that fixes the "dangerous" parts of C while keeping its speed.
-            </p>
+          <p className="tutorial-content">
+            In C or Java, enums are just a list of numbers. In Rust, Enums can hold <strong>actual data</strong>. This is why we use them for things like "API Responses".
+          </p>
+          <div className="comparison-grid">
+            <div>
+              <span className="lang-label">Node.js (Mixed Types)</span>
+              <pre><code>let status = "success";<br/>let data = &#123; id: 1 &#125;;<br/><span className="comment">// Hard to track types!</span></code></pre>
+            </div>
+            <div>
+              <span className="lang-label">Rust (Smart Enums)</span>
+              <pre><code><span className="keyword">enum</span> Response &#123;<br/>  Success(&#123; id: <span className="type">u32</span> &#125;),<br/>  Error(<span className="type">String</span>),<br/>&#125;</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tutorial-section">
+        <div className="card">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <Code2 size={32} className="text-blue-400" />
+            <h2>9. Traits (Rust "Interfaces")</h2>
+          </div>
+          <p className="tutorial-content">
+            Rust doesn't use <code>extends</code> for inheritance. Instead, it uses <strong>Traits</strong> to define shared behavior. If a type implements a trait, you know it can perform those actions.
+          </p>
+          <pre><code><span className="keyword">trait</span> Summary &#123;<br/>  <span className="keyword">fn</span> summarize(&amp;<span className="keyword">self</span>) -&gt; <span className="type">String</span>;<br/>&#125;<br/><br/><span className="keyword">impl</span> Summary <span className="keyword">for</span> User &#123; ... &#125;</code></pre>
+        </div>
+      </section>
+
+      <section className="tutorial-section">
+        <div className="card">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <ShieldAlert size={32} className="text-orange-400" />
+            <h2>10. The `?` Error Operator</h2>
+          </div>
+          <p className="tutorial-content">
+            In backend code, you often have to return an error if a database call fails. The <code>?</code> operator makes this incredibly clean in Rust.
+          </p>
+          <div className="comparison-grid">
+            <div>
+              <span className="lang-label">Node.js (Try/Catch)</span>
+              <pre><code>try &#123;<br/>  await db.save();<br/>&#125; catch (err) &#123;<br/>  return err;<br/>&#125;</code></pre>
+            </div>
+            <div>
+              <span className="lang-label">Rust (The `?`)</span>
+              <pre><code>db.save()?; <span className="comment">// Magic!</span><br/><span className="comment">// It automatically returns </span><br/><span className="comment">// the error if it fails.</span></code></pre>
+            </div>
           </div>
         </div>
       </section>
@@ -184,7 +270,7 @@ const Documentation = () => {
         <div className="card" style={{ background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
             <ShieldAlert size={32} className="text-green-400" />
-            <h2>9. Intermediate Tip: Ownership</h2>
+            <h2>11. Intermediate Tip: Ownership</h2>
           </div>
           <p className="tutorial-content">
             Unlike JavaScript which has a <strong>Garbage Collector</strong>, Rust uses <strong>Ownership</strong>. When a variable goes out of scope, Rust cleans it up <strong>immediately</strong>.
